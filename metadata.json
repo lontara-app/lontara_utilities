@@ -1,0 +1,9 @@
+{
+    "name": "lontara_utilities",
+    "authors": ["Abdul Hakim Ghaniy"],
+    "email": "abdulhakimghaniy@outlook.co.id",
+    "homepage": "https://github.com/lontara-app/lontara-utilities",
+    "summary": "Lontara Utilities provided by Lontara.app",
+    "description": "Lontara Utilities provides some utils for your Ruby's project, like RabbitMQ Connection for Pub/Sub Messaging and RPC, HTTP Client, Git Branch or Release, and Base Error with some features. This utils used by our Lontara.app's services and we want to share it with you. Built with Faraday, Bunny, SecureRandom, and ConnectionPool. Enjoy!",
+    "license": "GPL-3.0"
+}
