@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lontara_utilities (3.0.2)
+    lontara_utilities (3.1.0)
       bunny (~> 2.20)
       connection_pool (~> 2.4)
       faraday (~> 2.7)
