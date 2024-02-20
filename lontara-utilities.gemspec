@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'bunny', '~> 2.20'
   spec.add_dependency 'connection_pool', '~> 2.4'
   spec.add_dependency 'faraday', '~> 2.7'
+  spec.add_dependency 'faraday-net_http_persistent', '~> 2.0'
   spec.add_dependency 'json', '~> 2.6'
   spec.add_dependency 'securerandom', '~> 0.2'
   spec.add_dependency 'uri', '~> 0.12'
