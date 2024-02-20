@@ -25,18 +25,14 @@ module LontaraUtilities
       attr_reader :method, :url, :headers, :body, :params, :timeout
 
       def call
-        connection.send(method, url) do |req|
-          req.body = parsed_body if body
-          req.params = params if params
-          req.options.timeout = timeout
-          req.options.open_timeout = timeout
-        end
-      end
-
-      def connection
-        Faraday.new do |faraday|
-          faraday.headers = headers
-          faraday.adapter Faraday.default_adapter
+        HTTPClient.connection.with do |conn|
+          conn.send(method, url) do |req|
+            req.headers = headers
+            req.body = parsed_body if body
+            req.params = params if params
+            req.options.timeout = timeout
+            req.options.open_timeout = timeout
+          end
         end
       end
 

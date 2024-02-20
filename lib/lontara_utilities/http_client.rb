@@ -3,6 +3,8 @@
 require 'json'
 require 'uri'
 require 'faraday'
+require 'faraday/net_http_persistent'
+require 'connection_pool'
 
 require_relative 'git'
 require_relative 'http_client/body_parser'
@@ -44,14 +46,17 @@ module LontaraUtilities
   #   JSON.parse(request.body)
   #
   module HTTPClient
-    def self.new(method, url:, **options)
-      Request.new(method, url:, **options).perform
+    def self.connection
+      @connection ||= ::ConnectionPool::Wrapper.new(size: 5, timeout: 5) do
+        Faraday.new do |faraday|
+          faraday.adapter :net_http_persistent
+        end
+      end
     end
 
-    # Use predifined method to make HTTP request.
     %i[get post put delete patch].each do |method|
       define_singleton_method(method) do |url:, **options|
-        Request.new(method, url:, **options).perform
+        Request.new(method, url: url, **options).perform
       end
     end
   end
